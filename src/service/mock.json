@@ -1,0 +1,18 @@
+[
+  {
+    "createdAt": "2022-06-16T05:46:07.525Z",
+    "name": "Emre",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/8.jpg",
+    "password": "dumanemre3",
+    "email": "dumanemre3@hotmail.com",
+    "id": "1"
+  },
+  {
+    "createdAt": "2022-06-16T18:35:09.476Z",
+    "name": "Tayfun",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/650.jpg",
+    "password": "erbilentayfun3",
+    "email": "erbilentayfun3@hotmail.com",
+    "id": "2"
+  }
+]
