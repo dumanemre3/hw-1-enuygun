@@ -11,18 +11,19 @@ function Login() {
   const [userDatas, setUserData] = useState(mockData);
 
   const handleLogIn = () => {
-    userDatas.filter((datas) => {
+    let control = false;
+    userDatas.map((datas) => {
       if (email === datas.email && password === datas.password) {
-        navigate("/todo");
-      } else {
-        alert("Email adresi veya parola hatalı.");
+        control = true;
       }
     });
+    if (control) navigate("/todo");
+    else alert("Kullanıcının mail adresi veya şifresi hatalıdır.");
   };
 
   return (
     <section className="vh-100">
-      <div className="container-fluid">
+      <div className="container-fluid ">
         <div className="row">
           <div className="col-sm-6 text-black">
             <div className="px-5 ms-xl-4">

@@ -2,5 +2,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 15vh;
+}
+
+.input-todo {
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  height: 38px;
+  padding: 0 10px;
+  font-size: 16px;
+  color: black;
+  outline: 0;
+}
+
+.input-todo:focus {
+  border-color: rgb(92, 163, 221);
 }

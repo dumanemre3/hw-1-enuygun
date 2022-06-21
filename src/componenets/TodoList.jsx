@@ -3,19 +3,20 @@ import { TodoContext } from "./context/TodoContext";
 import TodoItem from "./TodoItem";
 import "./todoItem.css";
 
-function TodoList() {
+function TodoList({ data }) {
   const [todoList, setTodoList] = useContext(TodoContext);
 
   return (
     <>
-      <ul
-        className="d-flex flex-column justify-content-center align-item-center list-unstyled mt-5"
-        style={{ width: "100%" }}
-      >
-        {todoList.map((todo, index) => {
-          return <TodoItem todo={todo} key={index} indexedItem={index} />;
-        })}
-      </ul>
+      <div className="row g-0 justify-content-center mb-5">
+        <div className="col-9">
+          <ul className="list-item d-flex flex-column justify-content-center align-item-center list-unstyled">
+            {data.map((todo, index) => {
+              return <TodoItem todo={todo} key={index} indexedItem={index} />;
+            })}
+          </ul>
+        </div>
+      </div>
     </>
   );
 }
