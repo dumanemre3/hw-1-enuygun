@@ -3,11 +3,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "../Login";
 import Todo from "../Todo";
 import Error from "../Error";
+import Header from "../Header";
 
 function PublicRoute() {
   return (
     <>
-      <header className="p-3 bg-dark text-white"></header>
+      <Header></Header>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />}></Route>
