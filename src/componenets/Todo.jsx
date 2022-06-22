@@ -26,14 +26,17 @@ function Todo() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (todo.length > 1) {
+    if (todo.length != 0) {
+      // BUG VAR
       setTodoList([
         ...todoList,
         { name: todo, isCompleted: false, id: Math.floor(Math.random() * 100) },
       ]);
       // console.log(todo, todoList);
       setTodo("");
-    } else alert("Maximum 70 karakter girebilirsiniz.");
+      // BUG VAR
+    }
+    // BUG VAR.
   };
 
   // const filterList = () => {};
@@ -99,10 +102,26 @@ function Todo() {
       ) : (
         <TodoList data={filteredData}></TodoList>
       )} */}
-      {filteredData == "" ? (
+      {wordEntered === "" ? (
         <TodoList data={todoList}></TodoList>
-      ) : (
+      ) : filteredData.length > 0 ? (
         <TodoList data={filteredData}></TodoList>
+      ) : (
+        <>
+          <div className="d-flex justify-content-center column">
+            <div className="no-search fs-3 ">
+              Aramanıza uygun herhangi bir todo bulunamamıştır.
+              <button
+                className="mt-3 btn btn-warning d-flex justify-content-center "
+                onClick={() => {
+                  setWordEntered("");
+                }}
+              >
+                Todolarımı Tekrar Listele
+              </button>
+            </div>
+          </div>
+        </>
       )}
     </>
   );

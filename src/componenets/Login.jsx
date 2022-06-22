@@ -22,7 +22,7 @@ function Login() {
   };
 
   return (
-    <section className="vh-100">
+    <section className="vh-max">
       <div className="container-fluid ">
         <div className="row">
           <div className="col-sm-6 text-black">
@@ -33,7 +33,7 @@ function Login() {
               ></i>
             </div>
 
-            <div className="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+            <div className="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5 mt-10">
               <form style={{ width: "23rem" }}>
                 <h3 className="fs-3 mb-1 pb-3">LOG IN</h3>
                 <div className="form-outline mb-4">

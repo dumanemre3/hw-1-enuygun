@@ -6,14 +6,17 @@ import Error from "../Error";
 
 function PublicRoute() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/todo" element={<Todo></Todo>}></Route>
-        <Route path="*" element={<Error></Error>}></Route>
-      </Routes>
-    </BrowserRouter>
+    <>
+      <header className="p-3 bg-dark text-white"></header>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/todo" element={<Todo></Todo>}></Route>
+          <Route path="*" element={<Error></Error>}></Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 

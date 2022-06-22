@@ -3,7 +3,7 @@ import TodoContext from "./context/TodoContext";
 import { EditText, EditTextarea } from "react-edit-text";
 import "./todoItem.css";
 
-const TodoItem = ({ todo, setTodo, indexedItem }) => {
+const TodoItem = ({ todo, indexedItem }) => {
   const [todoList, setTodoList] = useContext(TodoContext);
   const [isChecked, setIsChecked] = useState(false);
   const [onEdit, setOnEdit] = useState(false);
@@ -17,6 +17,7 @@ const TodoItem = ({ todo, setTodo, indexedItem }) => {
   }, [todo.name]);
 
   const handleDelete = (index) => {
+    console.log(index);
     setTodoList([...todoList.filter((todo, i) => index !== i)]);
   };
 
@@ -28,9 +29,9 @@ const TodoItem = ({ todo, setTodo, indexedItem }) => {
     );
   };
 
-  useEffect(() => {
-    localStorage.setItem("todoList", JSON.stringify(todoList));
-  }, [todoList]);
+  // useEffect(() => {
+  //   localStorage.setItem("todoList", JSON.stringify(todoList));
+  // }, [todoList]);
 
   const handleEdit = (index, e) => {
     // setTodoList(
@@ -63,33 +64,26 @@ const TodoItem = ({ todo, setTodo, indexedItem }) => {
             }}
           />
 
-          {isChecked && (
-            <label>
-              <EditText
-                className="ms-2"
-                style={{ textDecoration: "line-through" }}
-                name="textbox1"
-                key={todo.name}
-                defaultValue={todo.name}
-                inputClassName="bg-light"
-                onChange={() => {
-                  handleEdit();
-                  setOnEdit(!onEdit);
-                }}
-              />
-            </label>
-          )}
-          {!isChecked && (
-            <label>
-              <EditText
-                className="ms-2"
-                name="textbox1"
-                defaultValue={todo.name}
-                inputClassName="bg-light"
-                onChange={() => handleEdit()}
-              />
-            </label>
-          )}
+          <label>
+            <EditText
+              className="ms-2"
+              style={isChecked ? { textDecoration: "line-through" } : {}}
+              name="textbox1"
+              key={todo.name}
+              defaultValue={todo.name}
+              inputClassName="bg-light"
+              onChange={(e) => {
+                console.log(e);
+                // handleEdit();
+                // setOnEdit(!onEdit);
+              }}
+              onSave={(data) => {
+                let tempTodoList = [...todoList];
+                tempTodoList[indexedItem].name = data.value;
+                setTodoList(tempTodoList);
+              }}
+            />
+          </label>
 
           {/* {isChecked && (
             <span style={{ textDecoration: "line-through" }} className="ms-2">
@@ -99,7 +93,7 @@ const TodoItem = ({ todo, setTodo, indexedItem }) => {
           {!isChecked && <span className="ms-2"> {todo.name} </span>} */}
         </div>
         <div className="text-end" style={{ flex: 1 }}>
-          <button
+          {/* <button
             className="btn btn-warning btn-sm mx-2"
             onClick={(e) => {
               e.preventDefault();
@@ -107,7 +101,7 @@ const TodoItem = ({ todo, setTodo, indexedItem }) => {
             }}
           >
             Düzenle
-          </button>
+          </button> */}
           <button
             className="btn btn-danger btn-sm"
             onClick={(e) => {
