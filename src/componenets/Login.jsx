@@ -1,20 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import mockData from "../service/mock.json";
 import { useEffect } from "react";
-
+import UserContext from "./context/UserContext";
 function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [userDatas, setUserData] = useState(mockData);
+  const [user, setUser] = useContext(UserContext);
 
   const handleLogIn = () => {
     let control = false;
     userDatas.map((datas) => {
       if (email === datas.email && password === datas.password) {
         control = true;
+        setUser(datas.name);
+        console.log(datas.name);
       }
     });
     if (control) navigate("/todo");

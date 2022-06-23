@@ -3,12 +3,21 @@ import TodoList from "./TodoList";
 import { TodoContext } from "./context/TodoContext";
 import "./todo.css";
 import { FcSearch } from "react-icons/fc";
+import UserContext from "./context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 function Todo() {
+  const navigate = useNavigate();
   const [todoList, setTodoList] = useContext(TodoContext);
   const [todo, setTodo] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
+  const [user, setUser] = useContext(UserContext);
+
+  const handleLogOut = () => {
+    setUser("");
+    navigate("/login");
+  };
 
   const handleFilter = (event) => {
     const searchWord = event.target.value;
@@ -35,6 +44,8 @@ function Todo() {
       // console.log(todo, todoList);
       setTodo("");
       // BUG VAR
+    } else {
+      alert("Data gir.");
     }
     // BUG VAR.
   };
@@ -57,6 +68,17 @@ function Todo() {
 
   return (
     <>
+      <header className="p-3 bg-dark text-white">
+        <div className="row mx-5">
+          <div className="col mt-1">{`Hoşgeldin ${user}, bu sayfada yapılacak işlerini girebilirsin.`}</div>
+          <button
+            className="btn btn-danger col-md-1 d-flex justify-content-end justify-content-center"
+            onClick={() => handleLogOut()}
+          >
+            ÇIKIŞ YAP
+          </button>
+        </div>
+      </header>
       <h3 className="heading-title text-center py-5">Yapılacaklar Listesi</h3>
       <form className="todoList my-5" onSubmit={handleSubmit}>
         <label className="fs-5">
@@ -111,14 +133,16 @@ function Todo() {
           <div className="d-flex justify-content-center column">
             <div className="no-search fs-3 ">
               Aramanıza uygun herhangi bir todo bulunamamıştır.
-              <button
-                className="mt-3 btn btn-warning d-flex justify-content-center "
-                onClick={() => {
-                  setWordEntered("");
-                }}
-              >
-                Todolarımı Tekrar Listele
-              </button>
+              <div className="d-flex justify-content-center">
+                <button
+                  className="mt-3 btn btn-warning "
+                  onClick={() => {
+                    setWordEntered("");
+                  }}
+                >
+                  Todolarımı Tekrar Listele
+                </button>
+              </div>
             </div>
           </div>
         </>

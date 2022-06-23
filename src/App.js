@@ -6,11 +6,11 @@ import { UserProvider } from "./componenets/context/UserContext";
 
 function App() {
   return (
-    // <UserProvider>
-    <TodoProvider>
-      <PublicRoute></PublicRoute>
-    </TodoProvider>
-    // </UserProvider>
+    <UserProvider>
+      <TodoProvider>
+        <PublicRoute></PublicRoute>
+      </TodoProvider>
+    </UserProvider>
   );
 }
 
